@@ -1,0 +1,42 @@
+% List of files to plot (in desired subplot order)
+filenames = {
+    'V1CE4000_profilometer_2.csv'
+    'V1PE3000_profilometer_2.csv'
+    'V1PE2000_profilometer_2.csv'
+    'V1PE1500_profilometer_2.csv'
+    'V1PE1500_profilometer_2_zoomed.csv'
+    };
+
+% Number of subplots
+nrows = 2;
+ncols = 3;
+
+figure;
+for k = 1:length(filenames)
+    % Read CSV data
+    data = readmatrix(filenames{k}); 
+    if isnan(data(1,1)) || isnan(data(1,2))
+        data = readmatrix(filenames{k},'NumHeaderLines',1);
+    end
+    
+    % Define matricies variables
+    lateral = data(:,1);
+    profile = data(:,2);
+
+    % Subplot
+    subplot(nrows, ncols, k);
+    plot(lateral, profile, 'b-', 'LineWidth', 1.5);
+    xlabel('Lateral Position (mm)');
+    ylabel('Profile (nm)');
+    title(strrep(filenames{k},'_','\_'),'Interpreter','tex'); % Escape underscores for titles
+    ylinm([-500 2500]);
+    grid on;
+end
+
+% If you want to leave the 6th subplot blank, do nothing.
+if length(filenames) < nrows*ncols
+    subplot(nrows, ncols, nrows*ncols);
+    axis off;
+end
+
+sgtitle('Profilometer Surface Profiles'); % Super-title for the figure

@@ -1,0 +1,11 @@
+Image resolution 
+	768x768
+Scale 
+	5 micrometers per pixel
+Physical dimension 
+	(individual mm x mm)
+		3.93 x 3.93 
+	(total dimension mm^2)
+		15.445 
+	(sum of all 6 bitmaps mm^2)
+		92.67 mm^2
