@@ -24,13 +24,6 @@ function spot_intensity = spot_intensity_roi(matfile, varname, centre, radius)
     dp = S.(varname); % matrix (e.g. intensity or field)
     [height, width] = size(dp);
 
-    % If dp is complex, convert to intensity
-    % if ~isreal(dp)
-    %     intensity = abs(dp).^2;
-    % else
-    %     intensity = dp;
-    % end
-
     intensity = dp;
 
     % Generate circular mask
